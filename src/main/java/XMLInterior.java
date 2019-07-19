@@ -20,8 +20,8 @@ class XMLInterior {
     XMLInterior(int whatYear) {
         EasterCalculations easterCalculations = new EasterCalculations();
         WhatFirstDayOfYear whatFirstDayOfYear = new WhatFirstDayOfYear(whatYear);
-        this.startYearDay = whatFirstDayOfYear.calculateWhatFirstDayOfYear();
-        this.currentYearDay = 1;
+        startYearDay = whatFirstDayOfYear.calculateWhatFirstDayOfYear();
+        currentYearDay = 1;
         isLeapYear = whatYear % 4 == 0 && whatYear % 100 != 0 || whatYear % 400 == 0;
         dateEaster = easterCalculations.calculateEasterDate(whatYear, isLeapYear);
         dateCorpusCristi = dateEaster + 40;
@@ -91,15 +91,19 @@ class XMLInterior {
     }
 
     private void checkHoliday(int noMonth, int currentMonthDay) {
-        if (6 == startYearDay % 7 || 0 == startYearDay % 7) holiday.setValue("1");
-        else if (1 == noMonth && (1 == currentMonthDay || 6 == currentMonthDay)) holiday.setValue("1");
-        else if (5 == noMonth && (1 == currentMonthDay || 3 == currentMonthDay)) holiday.setValue("1");
-        else if (8 == noMonth && 15 == currentMonthDay) holiday.setValue("1");
-        else if (11 == noMonth && (11 == currentMonthDay || 1 == currentMonthDay)) holiday.setValue("1");
-        else if (12 == noMonth && (25 == currentMonthDay || 26 == currentMonthDay)) holiday.setValue("1");
-        else if (currentYearDay == dateEaster || currentYearDay == dateEaster + 1) holiday.setValue("1");
-        else if (currentYearDay == dateCorpusCristi) holiday.setValue("1");
-        else if (currentYearDay == datePentecost) holiday.setValue("1");
+        if (6 == startYearDay % 7 || 0 == startYearDay % 7) holiday.setValue("1"); //Saturday & Sunday
+        else if (1 == noMonth && (1 == currentMonthDay || 6 == currentMonthDay))
+            holiday.setValue("1"); //New Year & three Kings
+        else if (5 == noMonth && (1 == currentMonthDay || 3 == currentMonthDay))
+            holiday.setValue("1"); //Labour Day & 03.05
+        else if (8 == noMonth && 15 == currentMonthDay) holiday.setValue("1"); //Armed Forces Day
+        else if (11 == noMonth && (11 == currentMonthDay || 1 == currentMonthDay))
+            holiday.setValue("1"); //All Saints’ Day & Independence Day
+        else if (12 == noMonth && (25 == currentMonthDay || 26 == currentMonthDay)) holiday.setValue("1"); //Christmas
+        else if (currentYearDay == dateEaster || currentYearDay == dateEaster + 1)
+            holiday.setValue("1"); //Easter & Monday
+        else if (currentYearDay == dateCorpusCristi) holiday.setValue("1");//CorpusCristi Boże Ciało
+        else if (currentYearDay == datePentecost) holiday.setValue("1");//Pentecost Zesłanie Ducha Świętego
         else holiday.setValue("0");
     }
 }
