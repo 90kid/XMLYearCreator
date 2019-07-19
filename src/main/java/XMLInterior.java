@@ -20,8 +20,8 @@ class XMLInterior {
     XMLInterior(int whatYear) {
         EasterCalculations easterCalculations = new EasterCalculations();
         WhatFirstDayOfYear whatFirstDayOfYear = new WhatFirstDayOfYear(whatYear);
-        this.startYearDay = whatFirstDayOfYear.calculateWhatFirstDayOfYear();
-        this.currentYearDay = 1;
+        startYearDay = whatFirstDayOfYear.calculateWhatFirstDayOfYear();
+        currentYearDay = 1;
         isLeapYear = whatYear % 4 == 0 && whatYear % 100 != 0 || whatYear % 400 == 0;
         dateEaster = easterCalculations.calculateEasterDate(whatYear, isLeapYear);
         dateCorpusCristi = dateEaster + 40;
