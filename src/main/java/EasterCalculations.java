@@ -18,11 +18,11 @@ class EasterCalculations {
         int monthOfEaster = temp / 31;
         int sumDays = 0;
         int[] monthDays = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
-        if (isLeapYear){
+        if (isLeapYear) {
             for (int z = 2; z < 12; z++)
                 monthDays[z] += 1;
         }
-        for(int z = 0; z < monthOfEaster; z++){
+        for (int z = 0; z < monthOfEaster; z++) {
             sumDays = monthDays[z];
         }
         sumDays += dayOfEaster;
