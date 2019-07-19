@@ -6,13 +6,12 @@ public class WhatFirstDayOfYearTest {
     @Test
     public void calculateWhatFirstDayOfYear() {
         int currentFirstDayOfYear = 4;
-        for (int currentYear = 1920; currentYear < 2221; currentYear++){
+        for (int currentYear = 1920; currentYear < 2221; currentYear++) {
             WhatFirstDayOfYear testObject = new WhatFirstDayOfYear(currentYear);
             Assert.assertEquals(currentFirstDayOfYear, testObject.calculateWhatFirstDayOfYear());
-            if(currentYear % 4 == 0 && currentYear % 100 != 0 || currentYear % 400 == 0){
+            if (currentYear % 4 == 0 && currentYear % 100 != 0 || currentYear % 400 == 0) {
                 currentFirstDayOfYear += 2;
-            }
-            else {
+            } else {
                 currentFirstDayOfYear++;
             }
             currentFirstDayOfYear %= 7;
@@ -20,19 +19,19 @@ public class WhatFirstDayOfYearTest {
     }
 
     @Test
-    public void Test2019(){
+    public void Test2019() {
         WhatFirstDayOfYear testObject = new WhatFirstDayOfYear(2019);
         Assert.assertEquals(2, testObject.calculateWhatFirstDayOfYear());
     }
 
     @Test
-    public void Test2010(){
+    public void Test2010() {
         WhatFirstDayOfYear testObject = new WhatFirstDayOfYear(2010);
         Assert.assertEquals(5, testObject.calculateWhatFirstDayOfYear());
     }
 
     @Test
-    public void Test2025(){
+    public void Test2025() {
         WhatFirstDayOfYear testObject = new WhatFirstDayOfYear(2025);
         Assert.assertEquals(3, testObject.calculateWhatFirstDayOfYear());
     }
