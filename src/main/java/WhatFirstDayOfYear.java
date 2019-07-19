@@ -14,13 +14,15 @@ class WhatFirstDayOfYear {
                 else tempYearFirstDay++;
                 tempYear++;
             }
-        } else if (whatYear < tempYear) {
+        }
+        else if (whatYear < tempYear) {
             while (whatYear != tempYear) {
                 if (whatYear % 4 == 0 && whatYear % 100 != 0 || whatYear % 400 == 0) tempYearFirstDay -= 2;
                 else tempYearFirstDay--;
                 whatYear++;
             }
-        } else return tempYearFirstDay;
+        }
+        else return tempYearFirstDay;
         return (tempYearFirstDay % 7 + 7) % 7;
     }
 }
