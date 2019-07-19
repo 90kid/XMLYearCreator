@@ -1,4 +1,4 @@
-class EasterCalculations { //zastanowic sie jak to zmienic
+class EasterCalculations {
     int calculateEasterDate(int year, boolean isLeapYear) {
         int a = year % 19;
         int b = year / 100;
