@@ -1,20 +1,31 @@
-class EasterCalculations { //zastanowic sie jak to zmienic
+class EasterCalculations {
     int calculateEasterDate(int year, boolean isLeapYear) {
-        final int centuryPaschalFullMoon = 24, cycleOfDaysOfWeek = 5; //valid until 2099 A.D.
-        int cycleMetonic, leapJulian, nonLeapYear, datePaschalFullMoon, firstSundayAfterPaschalFullMoon;
-
-        cycleMetonic = year % 19;
-        leapJulian = year % 4;
-        nonLeapYear = year % 7;
-
-        datePaschalFullMoon = (cycleMetonic * 19 + centuryPaschalFullMoon) % 30;
-        firstSundayAfterPaschalFullMoon = (2 * leapJulian + 4 * nonLeapYear + 6 * datePaschalFullMoon + cycleOfDaysOfWeek) % 7;
-
-        int dayOfEaster = 81 + datePaschalFullMoon + firstSundayAfterPaschalFullMoon;
-        if (29 == datePaschalFullMoon && 6 == firstSundayAfterPaschalFullMoon)
-            return isLeapYear ? 110 : 109;
-        else if (28 == datePaschalFullMoon && 6 == firstSundayAfterPaschalFullMoon && cycleMetonic > 10)
-            return isLeapYear ? dayOfEaster - 6 : dayOfEaster - 7;
-        return isLeapYear ? dayOfEaster + 1 : dayOfEaster;
+        int a = year % 19;
+        int b = year / 100;
+        int c = year % 100;
+        int d = b / 4;
+        int e = b % 4;
+        int f = (b + 8) / 25;
+        int g = (b - f + 1) / 3;
+        int h = (19 * a + b - d - g + 15) % 30;
+        int i = c / 4;
+        int k = c % 4;
+        int l = (32 + 2 * e + 2 * i - h - k) % 7;
+        int m = (a + 11 * h + 22 * l) / 451;
+        int temp = h + l - 7 * m + 114;
+        int p = temp % 31;
+        int dayOfEaster = p + 1;
+        int monthOfEaster = temp / 31;
+        int sumDays = 0;
+        int[] monthDays = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+        if (isLeapYear) {
+            for (int z = 2; z < 12; z++)
+                monthDays[z] += 1;
+        }
+        for (int z = 0; z < monthOfEaster; z++) {
+            sumDays = monthDays[z];
+        }
+        sumDays += dayOfEaster;
+        return sumDays;
     }
 }
