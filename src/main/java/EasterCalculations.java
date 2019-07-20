@@ -1,5 +1,6 @@
 class EasterCalculations {
     int calculateEasterDate(int year, boolean isLeapYear) {
+        // Method Meeusa/Jonesa/Butchera
         int a = year % 19;
         int b = year / 100;
         int c = year % 100;
