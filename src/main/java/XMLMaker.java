@@ -32,6 +32,8 @@ class XMLMaker {
             if (!directoryXML.exists())
                 if (!directoryXML.mkdir())
                     throw new Exception("Cannot create directory!");
+            if (!directoryXML.isDirectory())
+                System.exit(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
