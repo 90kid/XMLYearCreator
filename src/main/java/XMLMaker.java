@@ -27,11 +27,13 @@ class XMLMaker {
     }
 
     private void checkDirectory(String pathName) {
-        File directoryXML = new File(pathName);
-        if (!directoryXML.exists())
-            if (!directoryXML.mkdir())
-                System.out.println("Can't mkdir directory"); //WYJATEK kiedy nie mozna stw dir
-        if (!directoryXML.isDirectory())
-            System.exit(1);
+        try {
+            File directoryXML = new File(pathName);
+            if (!directoryXML.exists())
+                if (!directoryXML.mkdir())
+                    throw new Exception("Cannot create directory!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
