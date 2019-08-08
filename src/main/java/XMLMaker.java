@@ -19,10 +19,10 @@ class XMLMaker {
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource src = new DOMSource(document);
 
-        String pathName = "C:\\XML"; // zmienic lokalizacje !!!!!!!!!
+        String pathName = "./XMLyears"; // zmienic lokalizacje !!!!!!!!!
         checkDirectory(pathName);
 
-        StreamResult streamResult = new StreamResult(new File(pathName + "\\" + whatYear + ".xml"));
+        StreamResult streamResult = new StreamResult(new File(pathName + "/" + whatYear + ".xml"));
         transformer.transform(src, streamResult);
     }
 
