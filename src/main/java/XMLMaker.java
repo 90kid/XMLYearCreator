@@ -19,19 +19,23 @@ class XMLMaker {
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource src = new DOMSource(document);
 
-        String pathName = "C:\\XML"; // zmienic lokalizacje !!!!!!!!!
+        String pathName = "./XMLyears"; // zmienic lokalizacje !!!!!!!!!
         checkDirectory(pathName);
 
-        StreamResult streamResult = new StreamResult(new File(pathName + "\\" + whatYear + ".xml"));
+        StreamResult streamResult = new StreamResult(new File(pathName + "/" + whatYear + ".xml"));
         transformer.transform(src, streamResult);
     }
 
     private void checkDirectory(String pathName) {
-        File directoryXML = new File(pathName);
-        if (!directoryXML.exists())
-            if (!directoryXML.mkdir())
-                System.out.println("Can't mkdir directory"); //WYJATEK kiedy nie mozna stw dir
-        if (!directoryXML.isDirectory())
-            System.exit(1);
+        try {
+            File directoryXML = new File(pathName);
+            if (!directoryXML.exists())
+                if (!directoryXML.mkdir())
+                    throw new Exception("Cannot create directory!");
+            if (!directoryXML.isDirectory())
+                System.exit(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
